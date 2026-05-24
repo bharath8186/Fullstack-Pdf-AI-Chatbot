@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import UploadPanel from "./components/UploadPanel";
 import ChatWindow from "./components/ChatWindow";
 import ChatInput from "./components/ChatInput";
+import API_BASE_URL from "./config";
 import "./App.css";
 
 export default function App() {
@@ -9,7 +10,7 @@ export default function App() {
   const [filename, setFilename] = useState("");
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [uploadStatus, setUploadStatus] = useState("idle"); // idle | uploading | ready
+  const [uploadStatus, setUploadStatus] = useState("idle");
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function App() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:8000/upload", {
+      const res = await fetch(`${API_BASE_URL}/upload`, {
         method: "POST",
         body: formData,
       });
@@ -59,7 +60,7 @@ export default function App() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:8000/chat", {
+      const res = await fetch(`${API_BASE_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ session_id: sessionId, message: text }),
@@ -87,7 +88,7 @@ export default function App() {
 
   const handleNewChat = () => {
     if (sessionId) {
-      fetch(`http://localhost:8000/session/${sessionId}`, { method: "DELETE" });
+      fetch(`${API_BASE_URL}/session/${sessionId}`, { method: "DELETE" });
     }
     setSessionId(null);
     setFilename("");
