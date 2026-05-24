@@ -1,0 +1,125 @@
+.upload-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.up-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.drop-zone {
+  border: 1.5px dashed var(--border2);
+  border-radius: var(--radius);
+  padding: 28px 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.drop-zone:hover {
+  border-color: var(--accent);
+  background: #141a2e;
+  box-shadow: 0 0 20px var(--glow);
+}
+
+.drop-icon {
+  font-size: 26px;
+  color: var(--accent2);
+  margin-bottom: 4px;
+}
+
+.drop-text {
+  font-family: var(--font-head);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.drop-sub {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Status boxes */
+.status-box {
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.status-box.uploading {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted2);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--border2);
+  border-top-color: var(--accent2);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.status-box.ready {
+  background: #0d1f17;
+  border: 1px solid #1a3a2a;
+}
+
+.ready-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ready-icon {
+  color: var(--success);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.ready-name {
+  font-size: 12px;
+  color: var(--success);
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.new-doc-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  background: transparent;
+  border: 1px solid #1a3a2a;
+  color: var(--muted2);
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.new-doc-btn:hover {
+  border-color: var(--success);
+  color: var(--success);
+}
