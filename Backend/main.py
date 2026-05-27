@@ -21,10 +21,15 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI(title="RAG PDF Chatbot API")
 
+origins = [
+    "https://fullstack-pdf-ai-chatbot.vercel.app",
+    "http://localhost:5173",   # for local React/Vite testing
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins
-    allow_credentials=False,
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
